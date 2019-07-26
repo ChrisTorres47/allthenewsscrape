@@ -2,13 +2,18 @@ var express = require("express")
 var exphbs = require("express-handlebars")
 var mongoose = require("mongoose")
 var path = require("path")
+var axios = require("axios")
+var cheerio = require("cheerio")
+var mongojs = require("mongojs")
 
+var db = require("./models");
 var Note = require("./models/Note")
 var Article = require("./models/Article")
 
 var PORT = process.env.PORT || 8080
 var app = express();
-var routes = require("./routes")
+
+
 
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
@@ -17,7 +22,7 @@ app.use(express.urlencoded({ extended: true}));
 app.use(express.json());
 app.use(express.static("public"));
 
-app.use(routes);
+// app.use(routes);
 
 var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
 
