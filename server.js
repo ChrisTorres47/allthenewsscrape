@@ -6,6 +6,7 @@ var axios = require("axios")
 var cheerio = require("cheerio")
 var mongojs = require("mongojs")
 
+
 var db = require("./models");
 var Note = require("./models/Note")
 var Article = require("./models/Article")
@@ -57,6 +58,8 @@ app.get("/scrape", function(req,res){
         res.send("Scrape Complete")
     })
 })
+
+
 app.get("/articles", function(req, res) {
     db.Article.find({})
     .then(function(articles){
